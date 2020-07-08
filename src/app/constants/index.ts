@@ -1,0 +1,1 @@
+export const API_BASE_URL = 'https://data.townofcary.org/api/v2/catalog/datasets/rdu-weather-history';
