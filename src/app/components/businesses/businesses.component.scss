@@ -1,7 +1,7 @@
-:host ::ng-deep .ui-table-weather {
+:host ::ng-deep .ui-table-businesses {
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
     height: 100vh;
-    .customer-badge {
+    .bussiness-badge {
         border-radius: 2px;
         padding: .25em .5em;
         text-transform: uppercase;
@@ -9,12 +9,12 @@
         font-size: 12px;
         letter-spacing: .3px;
 
-        &.status-qualified {
+        &.status-Renewed {
             background-color: #C8E6C9;
             color: #256029;
         }
 
-        &.status-unqualified {
+        &.status-Expired {
             background-color: #FFCDD2;
             color: #C63737;
         }
@@ -24,7 +24,7 @@
             color: #8A5340;
         }
 
-        &.status-new {
+        &.status-New {
             background-color: #B3E5FC;
             color: #23547B;
         }
@@ -155,6 +155,7 @@
         &:last-child {
             text-align: left;
         }
+        
     }
 
     .ui-dropdown-label:not(.ui-placeholder) {
@@ -194,4 +195,38 @@
             }
         }
     }
+}
+
+:host ::ng-deep .ui-sidebar-lg {
+
+    .sidebar-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .w-50 {
+            width: 50%;
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+            label {
+                width: 50%;
+                &:last-child {
+                    text-align: left;
+                }
+            }
+            .status-Renewed {
+                color: #256029;
+            }
+    
+            .status-Expired {
+                color: #C63737;
+            }
+    
+            .status-New {
+                color: #23547B;
+            }
+        }
+    }
+    
+
 }

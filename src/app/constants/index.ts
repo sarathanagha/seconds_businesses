@@ -1,1 +1,2 @@
-export const API_BASE_URL = 'https://data.townofcary.org/api/v2/catalog/datasets/rdu-weather-history';
+export const API_BASE_URL = 'https://data.montgomerycountymd.gov/api/views/2pp9-yjcs/rows.json';
+export const MAP_API_URL = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyCQAkTvcFVbRUM9iTOeOangljr-Et-VUuk&q=';

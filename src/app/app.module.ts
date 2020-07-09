@@ -1,19 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { TableModule } from 'primeng/table';
 import { SidebarModule } from 'primeng/sidebar';
-import { WeatherReportComponent } from './components/weather-report/weather-report.component';
-import { WeatherService } from '../app/services/weather.service';
+import { TableModule } from 'primeng/table';
 import { CommonModule } from '../app/common/common.module';
+import { AppComponent } from './app.component';
+import { BusinessListComponent } from './components/businesses/businesses.component';
+import { BusinessService } from './services/business.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WeatherReportComponent
+    BusinessListComponent
   ],
   imports: [
     BrowserModule,
@@ -21,9 +20,10 @@ import { CommonModule } from '../app/common/common.module';
     BrowserAnimationsModule,
     CommonModule,
     TableModule,
-    SidebarModule
+    SidebarModule,
   ],
-  providers: [WeatherService],
+  providers: [BusinessService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

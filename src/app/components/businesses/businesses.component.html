@@ -1,0 +1,88 @@
+<p-table #dt 
+    [columns]="tableConfig.cols" 
+    [value]="tableConfig.businesses" 
+    [scrollable]="true" 
+    scrollHeight="calc(100vh - 150px)" 
+    [paginator]="true" 
+    [rows]="10"  
+    [rowsPerPageOptions]="[10,25,50]"
+    styleClass="ui-table-businesses">
+        <ng-template pTemplate="caption">
+            Businesses Selling Second Hand Goods
+            <div class="ui-table-globalfilter-container">
+                <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search" />
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                    {{col.header}}
+                    <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr (click)="toggleDetails(rowData)">
+                <td *ngFor="let col of columns">
+                    <span [class]="col.field === 'status' ? 'bussiness-badge status-' + rowData[col.field] : ''">{{rowData[col.field]}}</span>
+                </td>
+            </tr>
+        </ng-template>
+</p-table>
+
+<p-sidebar 
+    [(visible)]="tableConfig.displayDetals" 
+    position="right" 
+    styleClass="ui-sidebar-lg">
+        <h1 style="font-weight:normal"> {{tableConfig.selectedBusiness.trade_name}} </h1>
+        <div class="sidebar-container">
+            <div class="w-50">
+                <label> <b>License Number</b></label>
+                <label>{{tableConfig.selectedBusiness.license_number}}</label>
+            </div>
+            <div class="w-50">
+                <label> <b>Business Name</b></label>
+                <label>{{tableConfig.selectedBusiness.business_name}}</label>
+            </div>
+            <div class="w-50">
+                <label> <b>Phone</b></label>
+                <label>{{tableConfig.selectedBusiness.phone}}</label>
+            </div>
+            <div class="w-50">
+                <label> <b>Address</b></label>
+                <label>{{tableConfig.selectedBusiness.street_address}}</label>
+            </div>
+            <div class="w-50">
+                <label> <b>City</b></label>
+                <label>{{tableConfig.selectedBusiness.city}}</label>
+            </div>
+            <div class="w-50">
+                <label> <b>State</b></label>
+                <label>{{tableConfig.selectedBusiness.state}}</label>
+            </div>
+            <div class="w-50">
+                <label> <b>Zip</b></label>
+                <label>{{tableConfig.selectedBusiness.zip}}</label>
+            </div>
+            <div class="w-50">
+                <label> <b>Status</b></label>
+                <label [class]="'status-' + tableConfig.selectedBusiness.status">{{tableConfig.selectedBusiness.status}}</label>
+            </div>
+            <div class="w-50">
+                <label> <b>Date issued</b></label>
+                <label>{{tableConfig.selectedBusiness.date_issued}}</label>
+            </div>
+            <div class="w-50">
+                <label> <b>Date expired</b></label>
+                <label>{{tableConfig.selectedBusiness.date_expired}}</label>
+            </div>
+            <div style="width: 100%; margin-top: 20px;" id="mapid">
+                <iframe
+                    width="100%"
+                    height="350"
+                    frameborder="0" style="border:0"
+                    [src]="tableConfig.selectedBusiness.location" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+</p-sidebar>
